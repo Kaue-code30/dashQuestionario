@@ -1,25 +1,28 @@
-import Image from "next/image";
-"use client"
+"use client"; // Ensure this is at the top
+
+
 import SideBar from "./components/sideBar";
 import ContainerResumo from "./components/dashResumo/resumoContainer";
 import { Suspense, useEffect } from "react";
-import Loading from "./loading";
-import ModalInfoEmpresa from "./components/dashResumo/tabelaEmpresa/infoEmpresa";
+// import Loading from "./loading";
 
 export default function Home() {
-
   useEffect(() => {
-    setTimeout(function(){ location.reload(); }, 100000);
-  })
-
+    if (typeof window !== 'undefined') {
+      const timer = setTimeout(() => {
+        location.reload();
+      }, 100000);
+  
+      return () => clearTimeout(timer);
+    }
+  }, []);
+  
   return (
     <main className="flex flex-row h-screen max-h-screen bg-white items-start justify-between">
-        <SideBar/>
-        <Suspense fallback={<Loading/>}>
-        <ContainerResumo/>
-        </Suspense>
-        
-       
+      <SideBar />
+      {/* <Suspense fallback={<Loading />}> */}
+        <ContainerResumo />
+      {/* </Suspense> */}
     </main>
   );
 }

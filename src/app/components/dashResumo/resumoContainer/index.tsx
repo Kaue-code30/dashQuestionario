@@ -1,11 +1,26 @@
 "use client"
+import dynamic from 'next/dynamic';
 
-import PieChartComponent from "../graficPizza";
+const PieChartComponent = dynamic(() => import('@/app/components/dashResumo/graficPizza/index'), { ssr: false });
+
+
+
+
+import { useEffect } from "react";
+// import PieChartComponent from "../graficPizza";
 import ResumoQuantidade from "../resumoQuantidade";
 import ResumoQuantidadeRespostas from "../resumoQuantidadeRespostas";
 import TabelaEmpresas from "../tabelaEmpresa";
 
 export default function ContainerResumo() {
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          // Browser-specific code here, like manipulating the DOM or accessing localStorage
+          console.log(window.innerWidth);
+        }
+      }, []);
+
     return (
         <div className="w-full h-full p-20 ">
             {/* <Loading/> */}

@@ -1,4 +1,12 @@
+import { useEffect } from "react";
+
 export default function ResumoQuantidadeRespostas(){
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          // Browser-specific code here, like manipulating the DOM or accessing localStorage
+          console.log(window.innerWidth);
+        }
+      }, []);
     return(
         <div className="w-1/3 hover:cursor-default rounded-2xl border shadow-md  h-full">
             <div className="flex flex-col items-center  justify-center p-9 w-full h-full">

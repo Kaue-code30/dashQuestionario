@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
 import ModalConfirmation from "../../modalConfirmation";
@@ -8,6 +8,14 @@ import ModalInfoEmpresa from "./infoEmpresa";
 
 
 export default function TabelaEmpresas() {
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          // Browser-specific code here, like manipulating the DOM or accessing localStorage
+          console.log(window.innerWidth);
+        }
+      }, []);
+
     const [exclusaoEmpresaModal, setExclusaoEmpresaModal] = useState(false)
     const [showInfoEmpresaModal, setShowInfoEmpresaModal] = useState(false)
 

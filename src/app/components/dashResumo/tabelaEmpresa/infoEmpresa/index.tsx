@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import { useEffect } from "react";
 import { IoMdClose } from "react-icons/io"
 
 interface data {
@@ -6,7 +7,12 @@ interface data {
 }
 
 export default function ModalInfoEmpresa({closeModal} : data) {
-
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          // Browser-specific code here, like manipulating the DOM or accessing localStorage
+          console.log(window.innerWidth);
+        }
+      }, []);
     return (
         <div className="absolute z-50 flex items-center justify-center w-full h-full top-0 left-0 bg-[#000000a5]">
             <motion.div

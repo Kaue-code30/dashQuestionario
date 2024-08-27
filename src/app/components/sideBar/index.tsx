@@ -1,4 +1,5 @@
 import logo from "@/app/assets/faviconBranco.svg"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function SideBar() {
@@ -15,7 +16,7 @@ export default function SideBar() {
             <aside id="logo-sidebar" className="z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
                 <div className="h-full  py-4 overflow-y-auto bg-[#000]">
                     <Link href={"https://uxgroup.com.br"} target="_blank" className="flex px-5 items-center  mb-5">
-                        <img src={logo.src} className="w-20" alt="Flowbite Logo" />
+                        <Image width={100} height={100} src={logo.src} className="w-20" alt="Flowbite Logo" />
                         
                     </Link>
                     <ul className="space-y-2 pl-5 font-medium">
