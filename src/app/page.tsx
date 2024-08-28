@@ -4,6 +4,7 @@
 import SideBar from "./components/sideBar";
 import ContainerResumo from "./components/dashResumo/resumoContainer";
 import { Suspense, useEffect } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import Loading from "./loading";
 
 export default function Home() {
@@ -18,11 +19,13 @@ export default function Home() {
   }, []);
   
   return (
+    <QueryClientProvider client={new QueryClient()}>
     <main className="flex flex-row h-screen max-h-screen bg-white items-start justify-between">
       <SideBar />
       {/* <Suspense fallback={<Loading />}> */}
         <ContainerResumo />
       {/* </Suspense> */}
     </main>
+    </QueryClientProvider>
   );
 }
