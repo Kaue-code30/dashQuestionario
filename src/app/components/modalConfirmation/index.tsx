@@ -1,4 +1,5 @@
 "use client"
+import { Empresa } from "@/app/interfaces/empresaData";
 import { AnimatePresence, motion } from "framer-motion"
 import { useEffect } from "react";
 import { CgDanger } from "react-icons/cg"
@@ -9,10 +10,12 @@ interface data {
     nomeEmpresa: string
     exclusao: boolean;
     closeModal: () => void;
+    
 }
 
 export default function ModalConfirmation({ nomeEmpresa, exclusao, id_empresa, closeModal }: data) {
 
+    
 
     useEffect(() => {
         if(exclusao === false) {
@@ -23,9 +26,9 @@ export default function ModalConfirmation({ nomeEmpresa, exclusao, id_empresa, c
     })
 
     return (
-        <div className="absolute z-50 flex items-center justify-center w-full h-full top-0 left-0 bg-[#000000a5]">
+        <div className="absolute z-50 flex items-center justify-center w-full h-full top-0 left-0 bg-[#0000000e]">
 
-            <motion.div initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ ease: "easeOut", duration: 0.5 }} animate={{ opacity: 100 }} className="w-[400px] flex items-center justify-center flex-col p-5 h-[300px] bg-white rounded-2xl shadow-md">
+            <motion.div initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ ease: "easeOut", duration: 0.5 }} animate={{ opacity: 100 }} className="w-[400px] flex items-center justify-center flex-col p-5 h-[300px] bg-white rounded-2xl shadow">
                 <div className="w-full flex items-center justify-center h-1/3">
                     {
                         exclusao ? (

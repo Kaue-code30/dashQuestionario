@@ -14,7 +14,7 @@ export default function ModalInfoEmpresa({closeModal} : data) {
         }
       }, []);
     return (
-        <div className="absolute z-50 flex items-center justify-center w-full h-full top-0 left-0 bg-[#000000a5]">
+        <div onClick={() => closeModal()} className="absolute z-50 flex items-center justify-center w-full h-full top-0 left-0 bg-[#000000a5]">
             <motion.div
                 initial={{ opacity: 0 }}
                 exit={{ opacity: 0 }}
