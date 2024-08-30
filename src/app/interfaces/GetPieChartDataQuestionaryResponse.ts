@@ -1,3 +1,5 @@
+import { Empresa } from "./empresaData"
+
 export interface GetPieChartDataQuestionaryResponse{
    
         data: {
@@ -6,6 +8,18 @@ export interface GetPieChartDataQuestionaryResponse{
         }
     
 }
+export interface GetListDataQuestionaryResponse{
+   
+        data: {
+            status: number,
+            result: [
+                Empresa
+            ]
+        }
+    
+}
+
+
 
 export interface ClientDataResponse{
     content: GetPieChartDataQuestionaryResponse[]

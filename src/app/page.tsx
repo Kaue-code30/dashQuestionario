@@ -8,7 +8,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginComponent from "./components/screenAuth/Index";
 
 
+
+
+
 export default function Home() {
+
+  
 
   const [auth, setAuth] = useState(true);
 
@@ -35,10 +40,12 @@ export default function Home() {
           <LoginComponent auth={handleLogin} />
         </main>
       ) : (
-        <main className="flex flex-row h-screen max-h-screen bg-white items-start justify-between">
-          <SideBar />
-          <ContainerResumo />
-        </main>
+        
+          <main className="flex flex-row h-screen max-h-screen bg-white items-start justify-between">
+            <SideBar />
+            <ContainerResumo />
+          </main>
+   
 
       )}
     </QueryClientProvider>
