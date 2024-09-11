@@ -27,7 +27,7 @@ export default function ResumoQuantidade() {
             : contentData?.data.result;
 
         if (result === undefined) {
-            result = 10;
+            result = 0;
         }
 
         const setIntervalId = setInterval(() => {
