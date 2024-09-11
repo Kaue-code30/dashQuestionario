@@ -1,11 +1,7 @@
 export interface RespostaEmpresa {
-
-
-
     id_empresa: number;
     pergunta: string;
     respostas: string;
-
 
 }
 

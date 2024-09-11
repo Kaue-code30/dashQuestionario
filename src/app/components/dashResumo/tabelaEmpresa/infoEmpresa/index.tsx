@@ -21,7 +21,7 @@ export default function ModalInfoEmpresa({ closeModal, empresa }: Data) {
         }
     }, [empresa?.id, mutate]);
 
-    console.log(contentData?.data)
+
 
     const handleInformationView = (index: number) => {
         setIndex(index);

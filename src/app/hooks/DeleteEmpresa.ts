@@ -4,7 +4,7 @@ import { ResponseEmpresa } from "../interfaces/respostasEmpresas";
 
 // Ajuste da função fetchData para retornar o tipo correto
 const fetchData = async (id: number): Promise<ResponseEmpresa> => {
-    const API_URL = `http://localhost:3000/empresa/delete/${id}`;
+    const API_URL = `https://backend-questionarioux.onrender.com/empresa/delete/${id}`;
 
     const response = await axios.delete<ResponseEmpresa>(API_URL, {
         headers: {
@@ -13,7 +13,7 @@ const fetchData = async (id: number): Promise<ResponseEmpresa> => {
         },
     });
 
-    console.log(response.data);
+
     
     return response.data; // Retorna apenas os dados
 }

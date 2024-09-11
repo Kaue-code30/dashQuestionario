@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { GetPieChartDataQuestionaryResponse } from "../interfaces/GetPieChartDataQuestionaryResponse";
 
-const API_URL = 'http://localhost:3000/empresa/count';
+const API_URL = 'https://backend-questionarioux.onrender.com/empresa/count';
 
 const fetchData = async (): Promise<AxiosResponse<GetPieChartDataQuestionaryResponse>> => {
     let response: any;
@@ -19,6 +19,7 @@ const fetchData = async (): Promise<AxiosResponse<GetPieChartDataQuestionaryResp
 
 
     response = await axios.request<GetPieChartDataQuestionaryResponse>(options);
+    
     
     return response;
 }

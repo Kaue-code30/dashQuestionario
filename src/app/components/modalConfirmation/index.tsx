@@ -8,7 +8,7 @@ import { FaRegCheckCircle } from "react-icons/fa"
 
 interface data {
     id_empresa?: number ;
-    nomeEmpresa: string | undefined;
+    nomeEmpresa?: string | undefined;
     exclusao: boolean;
     closeModal: () => void;
     atualizar :() => void;

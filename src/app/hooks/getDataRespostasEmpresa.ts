@@ -4,7 +4,7 @@ import { ResponseEmpresa } from "../interfaces/respostasEmpresas";
 
 // Ajuste da função fetchData para retornar o tipo correto
 const fetchData = async (id: number): Promise<ResponseEmpresa> => {
-    const API_URL = `http://localhost:3000/empresa-perguntas/${id}`;
+    const API_URL = `https://backend-questionarioux.onrender.com/empresa-perguntas/${id}`;
 
     const response = await axios.get<ResponseEmpresa>(API_URL, {
         headers: {

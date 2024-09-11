@@ -89,8 +89,8 @@ export default function TabelaEmpresas({ dispatch }: TabelaEmpresasProps) {
 
     let filteredContent = contentData?.data.result.filter((empresa) => {
         return (
-            empresa.nomeEmpresa.toLowerCase().includes(nomeEmpresa.trim().toLowerCase()) &&
-            empresa.tipoEmpresa.toLowerCase().includes(tipoNegocio.trim().toLowerCase())
+            empresa?.nomeEmpresa?.toLowerCase().includes(nomeEmpresa.trim().toLowerCase()) &&
+            empresa?.tipoEmpresa?.toLowerCase().includes(tipoNegocio.trim().toLowerCase())
         );
     });
 
