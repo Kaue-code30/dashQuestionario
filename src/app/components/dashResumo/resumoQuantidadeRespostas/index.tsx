@@ -62,7 +62,7 @@ export default function ResumoQuantidadeRespostas() {
                     <h1 className="text-6xl text-[#009881] font-bold">
                         {numeroIncrementado}
                     </h1>
-                    <p className="pt-5 text-black font-medium">Total de conversas iniciadas</p>
+                    <p className="pt-5 text-black font-medium">Total de respostas registradas</p>
                 </div>
             )}
         </motion.div>

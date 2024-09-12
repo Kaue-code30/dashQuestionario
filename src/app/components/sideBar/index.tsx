@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillDashboard } from "react-icons/ai"
 
-import { MdDashboard } from "react-icons/md"
+import { MdContacts, MdDashboard } from "react-icons/md"
 
 
 
@@ -20,10 +20,18 @@ export default function SideBar({ IndexSidebar, SetIndexSidebar }: any) {
         },
         {
             "index": 1,
+            "title": "Leads",
+            "icon": MdContacts
+
+
+        },
+        {
+            "index": 2,
             "title": "Performance",
             "icon": AiFillDashboard
 
         },
+
     ]
 
     return (
@@ -46,8 +54,11 @@ export default function SideBar({ IndexSidebar, SetIndexSidebar }: any) {
                             return (
                                 <li onClick={() => { SetIndexSidebar(s.index) }} key={s.index}>
                                     <a href="#" className={`flex ${IndexSidebar === s.index ? "bg-white text-black hover:scale-100" : "text-white hover:scale-90 hover:bg-transparent"}  bg-black rounded-l-lg transition h-12  items-center p-2  group`}>
-                                        <s.icon fontSize={20} />
-                                        <span className="ms-3">{s.title}</span>
+                                        <div className={`flex ${IndexSidebar === s.index ? "scale-90 transition" : ""}`}>
+                                            <s.icon fontSize={20} />
+                                            <span className="ms-3">{s.title}</span>
+                                        </div>
+
                                     </a>
                                 </li>
                             )

@@ -1,9 +1,9 @@
 import { useClientDataQuestionary } from "@/app/hooks/getDataRespostasEmpresa";
 import { Empresa } from "@/app/interfaces/empresaData";
-import { motion } from "framer-motion";
+import { animate, AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { BiArrowBack } from "react-icons/bi";
-import { FaArrowRight, FaStar } from "react-icons/fa";
+import { BiArrowBack, BiCheckCircle } from "react-icons/bi";
+import { FaArrowRight, FaLessThanEqual, FaStar } from "react-icons/fa";
 
 interface Data {
     closeModal: () => void;
@@ -13,7 +13,9 @@ interface Data {
 export default function ModalInfoEmpresa({ closeModal, empresa }: Data) {
     const [index, setIndex] = useState(0);
     const [oportunidade, setOportunidade] = useState(false);
+    const [oportunidadeTime, setOportunidadeTime] = useState(false);
     const { mutate, contentData, isPending, isSuccess } = useClientDataQuestionary();
+
 
     useEffect(() => {
         if (empresa?.id) {
@@ -29,12 +31,49 @@ export default function ModalInfoEmpresa({ closeModal, empresa }: Data) {
 
     const handleOportunidade = () => {
         setOportunidade(!oportunidade);
+        setOportunidadeTime(!oportunidadeTime);
+
     }
 
-    
+    useEffect(() => {
+        if (oportunidade) {
+            const timer = setTimeout(() => {
+                setOportunidadeTime(false); // Aqui garante que o valor será definido para false após 1 segundo
+            }, 3000);
+
+            // Limpa o timer se o componente desmontar ou o `oportunidade` mudar
+            return () => clearTimeout(timer);
+        } else {
+            setOportunidadeTime(false);
+
+
+        }
+    }, [oportunidade]);
+
 
     return (
         <div className="z-50 flex items-center justify-center w-full h-full">
+            <AnimatePresence>
+                {
+                    oportunidadeTime && (
+
+                        <motion.div exit={{ translateX: -100, opacity:0 }} initial={{ translateX: -100, opacity: 0 }} transition={{ duration: 0.7, ease: "backInOut" }} animate={{ translateX: 0, opacity: 1 }} id="toast-success" className="flex absolute top-[60%] left-[19%] mt-5 items-center  w-auto p-4 mb-4 text-gray-500 bg-white rounded-lg shadow " role="alert">
+                            <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-3xl  text-white bg-[#ffffff3c] rounded-lg">
+                                <motion.div
+                                    style={{ position: "absolute" }}
+                                    animate={{ scale: [0.5, 1.5, 1] }}
+                                    transition={{ duration: 1, ease: "easeInOut", repeat: 0 }}
+                                >
+                                    <FaStar color="#FBC709" fontSize={25} />
+                                </motion.div>
+                            </div>
+                            <div className="ms-3 text-black text-sm font-normal">{empresa?.nomeEmpresa} foi marcada como uma oportunidade.</div>
+                        </motion.div>
+
+                    )
+                }
+            </AnimatePresence>
+
             <motion.div
                 initial={{ opacity: 0, translateX: -1000 }}
                 transition={{ ease: "easeOut", duration: 0.3 }}
@@ -86,27 +125,27 @@ export default function ModalInfoEmpresa({ closeModal, empresa }: Data) {
                                     <ul className="flex flex-col gap-2">
                                         <li className="text-base">
                                             <p>
-                                                <span className="font-bold">.</span> Id da empresa: <span className="font-bold pl-1">{empresa?.id}</span>
+                                                <span className="font-bold">-</span> Id da empresa: <span className="font-bold pl-1">{empresa?.id}</span>
                                             </p>
                                         </li>
                                         <li className="text-base">
                                             <p>
-                                                <span className="font-bold">.</span> Nome da empresa: <span className="font-bold pl-1">{empresa?.nomeEmpresa}</span>
+                                                <span className="font-bold">-</span> Nome da empresa: <span className="font-bold pl-1">{empresa?.nomeEmpresa}</span>
                                             </p>
                                         </li>
                                         <li className="text-base">
                                             <p>
-                                                <span className="font-bold">.</span> Nome do funcionário: <span className="font-bold pl-1">{empresa?.nomeFuncionario}</span>
+                                                <span className="font-bold">-</span> Nome do funcionário: <span className="font-bold pl-1">{empresa?.nomeFuncionario}</span>
                                             </p>
                                         </li>
                                         <li className="text-base">
                                             <p>
-                                                <span className="font-bold">.</span> E-mail para contato: <span className="font-bold pl-1">{empresa?.emailEmpresa}</span>
+                                                <span className="font-bold">-</span> E-mail para contato: <span className="font-bold pl-1">{empresa?.emailEmpresa}</span>
                                             </p>
                                         </li>
                                         <li className="text-base">
                                             <p>
-                                                <span className="font-bold">.</span> Telefone para contato: <span className="font-bold pl-1">{empresa?.tipoEmpresa}</span>
+                                                <span className="font-bold">-</span> Telefone para contato: <span className="font-bold pl-1">{empresa?.tipoEmpresa}</span>
                                             </p>
                                         </li>
                                         <li className="text-base flex gap-3 items-center pt-4">
@@ -172,7 +211,7 @@ export default function ModalInfoEmpresa({ closeModal, empresa }: Data) {
                                         </tbody>
                                     </table>
                                 ) : (
-                                    <p>No data available.</p>
+                                    <p>Nenhuma resposta foi registrada até este momento...</p>
                                 )}
                             </div>
                         </motion.div>

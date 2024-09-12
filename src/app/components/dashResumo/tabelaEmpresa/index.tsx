@@ -132,6 +132,7 @@ export default function TabelaEmpresas({ dispatch }: TabelaEmpresasProps) {
 
 
     return (
+        
         <motion.div
             initial={{ opacity: 0, }}
             animate={{ opacity: 100 }}

@@ -7,8 +7,9 @@ import ResumoQuantidade from "../resumoQuantidade";
 import ResumoQuantidadeRespostas from "../resumoQuantidadeRespostas";
 import TabelaEmpresas from "../tabelaEmpresa";
 import ModalInfoEmpresa from '../tabelaEmpresa/infoEmpresa';
+import { AnimatePresence } from 'framer-motion';
 
-interface State {
+export interface State {
     showModal: boolean;
     modalData: any | null;
 }
@@ -60,6 +61,7 @@ export default function ContainerResumo() {
         <div className="w-full h-full p-20 ">
             {/* <Loading/> */}
             {/* <ModalConfirmation exclusao nomeEmpresa="UX Group"/> */}
+            <AnimatePresence>
             {!state.showModal ? (
                 <>
                     <div className="w-full gap-14 pb-10 flex h-[300px]">
@@ -74,6 +76,7 @@ export default function ContainerResumo() {
             ) : (
                 <ModalInfoEmpresa empresa={state.modalData} closeModal={() => dispatch({ type: 'CLOSE_MODAL' })} />
             )}
+            </AnimatePresence>
         </div>
     )
 }
